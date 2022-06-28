@@ -42,7 +42,7 @@ class Exp_Basic(object):
 
         # TODO: get loss function and optimizer according to the exp_cfg
         loss_func = self._get_lossfunc()
-        #optimizer = self._get_optim()
+        optimizer = self._get_optim()
 
         # train_loop
         for epoch in range(epochs):
@@ -51,6 +51,7 @@ class Exp_Basic(object):
             iter_count = 0
 
             for input, target, input_time, target_time in train_loader:
+                input, target, input_time, target_time = \
                     input.float().to(self.device), target.float().to(self.device), input_time.float().to(self.device), target_time.float().to(self.device)
 
                 optimizer.zero_grad()
